@@ -1,0 +1,47 @@
+esphome:
+  name: Energy Monitor
+  platform: ESP32
+  board: nodemcu-32s
+  includes:
+   - powersensor.h
+   - EmonLib/EmonLib.h
+   - EmonLib/EmonLib.cpp
+
+wifi:
+  ssid: ""
+  password: ""
+
+  # Enable fallback hotspot (captive portal) in case wifi connection fails
+  ap:
+    ssid: "Energy Monitor Fallback Hotspot"
+    password: "FCV8QTAaFy1K"
+
+captive_portal:
+
+# Enable logging
+logger:
+
+# Enable Home Assistant API
+api:
+  password: ""
+
+ota:
+  password: ""
+
+
+sensor:
+- platform: custom
+  lambda: |-
+    auto my_sensor = new MyPowerSensor();
+    App.register_component(my_sensor);
+    return {my_sensor->realpower_sensor, my_sensor->apparentpower_sensor, my_sensor->powerfactor_sensor};
+    
+  sensors:
+  - name: "RealPowerSensor"
+    unit_of_measurement: W
+    accuracy_decimals: 2
+  - name: "ApparentPowerSensor"
+    unit_of_measurement: VA
+    accuracy_decimals: 2
+  - name: "PowerFactor"
+    accuracy_decimals: 2

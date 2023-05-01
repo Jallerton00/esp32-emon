@@ -1,0 +1,3 @@
+[submodule "software/esphome/EmonLib"]
+	path = software/esphome/EmonLib
+	url = https://github.com/openenergymonitor/EmonLib.git
