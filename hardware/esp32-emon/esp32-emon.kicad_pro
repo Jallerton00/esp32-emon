@@ -428,8 +428,8 @@
       "idf": "",
       "netlist": "",
       "specctra_dsn": "",
-      "step": "",
-      "vrml": ""
+      "step": "../../3d/esp32-emon.step",
+      "vrml": "../../3d/esp32-emon.wrl"
     },
     "page_layout_descr_file": ""
   },
