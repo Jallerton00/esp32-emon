@@ -9,7 +9,7 @@ class MyPowerSensor : public PollingComponent, public Sensor {
   Sensor *powerfactor_sensor = new Sensor();
   Sensor *voltage_sensor = new Sensor();
   Sensor *current_sensor = new Sensor();
-  MyPowerSensor() : PollingComponent(500) { }
+  MyPowerSensor() : PollingComponent(1000) { }
   
   void setup() override {
    emon1.voltage(33, 51.8, 1.7);
