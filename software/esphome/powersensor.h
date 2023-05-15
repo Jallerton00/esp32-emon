@@ -12,8 +12,8 @@ class MyPowerSensor : public PollingComponent, public Sensor {
   MyPowerSensor() : PollingComponent(1000) { }
   
   void setup() override {
-   emon1.voltage(33, 51.8, 1.7);
-   emon1.current(35, 0.1);
+   emon1.voltage(33, 54, 1.7);
+   emon1.current(35, 1);
   }
   
   void update() override {
