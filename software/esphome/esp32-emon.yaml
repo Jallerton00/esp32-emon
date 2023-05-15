@@ -43,16 +43,7 @@ sensor:
     
   sensors:
   - name: "Voltage"
-    unit_of_measurement: V
-    accuracy_decimals: 2
   - name: "Current"
-    unit_of_measurement: A
-    accuracy_decimals: 2
-  - name: "RealPowerSensor"
-    unit_of_measurement: W
-    accuracy_decimals: 2
-  - name: "ApparentPowerSensor"
-    unit_of_measurement: VA
-    accuracy_decimals: 2
+  - name: "Real Power"
+  - name: "Apparent Power"
   - name: "PowerFactor"
-    accuracy_decimals: 2
