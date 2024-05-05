@@ -1,0 +1,38 @@
+on:
+  push:
+    branches:
+    - main
+jobs:
+  kicad:
+    name: kicad-automations
+    runs-on: ubuntu-latest
+    permissions:                # Job-level permissions configuration starts here
+      contents: write           # 'write' access to repository contents
+      pull-requests: write      # 'write' access to pull requests
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v4
+
+      - name: Render PCB images
+        uses: linalinn/kicad-render@main
+        with:
+          pcb_file: ${{ github.workspace }}/hardware/esp32-emon/esp32-emon.kicad_pcb
+          output_path: ${{ github.workspace }}/hardware/esp32-emon/images
+          animation: gif # Animation - commented out as takes a while
+
+      - name: Export production files
+        id: production
+        uses: sparkengineering/kicad-action@v1
+        if: '!cancelled()'
+        with:
+          kicad_sch: ${{ github.workspace }}/hardware/esp32-emon/esp32-emon.kicad_sch
+          sch_pdf: true # Generate PDF
+          sch_pdf_file: schematic.pdf
+          kicad_pcb: ${{ github.workspace }}/hardware/esp32-emon/esp32-emon.kicad_pcb
+          pcb_gerbers: true # Generate Gerbers
+          pcb_gerbers_file: esp32-emon.zip
+
+      - name: Upload output
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: Update images, schematic and gerbers
