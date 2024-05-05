@@ -18,7 +18,7 @@ jobs:
         with:
           pcb_file: ${{ github.workspace }}/hardware/esp32-emon/esp32-emon.kicad_pcb
           output_path: ${{ github.workspace }}/hardware/esp32-emon/images
-          animation: gif # Animation - commented out as takes a while
+          animation: gif # Animation
 
       - name: Export production files
         id: production
