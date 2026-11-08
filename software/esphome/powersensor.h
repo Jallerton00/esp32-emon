@@ -2,17 +2,10 @@
 #include "EmonLib.h"
 
 #define VOLTAGE_PIN 33
-<<<<<<< Updated upstream
 #define VOLTAGE_CALIBRATION 57.19
 #define PHASE_CALIBRATION 1.28
 #define CURRENT_1_CALIBRATION 26.4
 #define CURRENT_1_PIN 34
-=======
-#define VOLTAGE_CALIBRATION 54
-#define PHASE_CALIBRATION 1.7
-#define CURRENT_1_CALIBRATION 1
-#define CURRENT_1_PIN 35
->>>>>>> Stashed changes
 
 class MyPowerSensor : public PollingComponent, public Sensor {
  public:
